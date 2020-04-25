@@ -10,85 +10,88 @@ class App extends React.Component {
     }
   }
 
-  getPosts = () => {
-    fetch("http://localhost:8000/posts")
-      .then(res => res.json())
-      .then(
-        result => {
-          this.setState({
-            posts: result,
-          })
-          console.log(result)
-        },
-        error => {
-          console.error(error.message)
-        }
-      )
+  getPosts = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/posts")
+      if (!response.ok) {
+        throw Error(response.statusText)
+      }
+      const json = await response.json()
+      this.setState({
+        posts: json,
+      })
+      console.log(json)
+    } catch (error) {
+      console.error(error.message)
+    }
   }
 
-  createPost = () => {
+  createPost = async () => {
     const url = "http://localhost:8000/posts"
     const data = { id: 4, title: "New Post", postid: 4, author: "New" }
-
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(
-      result => {
-        this.getPosts()
-        console.log(result)
-      },
-      error => {
-        console.error(error.message)
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      if (!response.ok) {
+        throw Error(response.statusText)
       }
-    )
+      const json = await response.json()
+      this.getPosts()
+      console.log(json)
+    } catch (error) {
+      console.error(error.message)
+    }
   }
 
-  updatePost = () => {
+  updatePost = async () => {
     const url = "http://localhost:8000/posts/4"
     const data = {
       title: "Updated Post",
       postid: 4,
       author: "New",
     }
-
-    fetch(url, {
-      method: "PUT",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(
-      result => {
-        this.getPosts()
-        console.log(result)
-      },
-      error => {
-        console.error(error.message)
+    try {
+      const response = await fetch(url, {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      if (!response.ok) {
+        throw Error(response.statusText)
       }
-    )
+      const json = await response.json()
+      this.getPosts()
+      console.log(json)
+    } catch (error) {
+      console.error(error.message)
+    }
   }
 
-  deletePost = () => {
+  deletePost = async () => {
     const url = "http://localhost:8000/posts/4"
-
-    fetch(url, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(
-      result => {
-        this.getPosts()
-        console.log(result)
-      },
-      error => {
-        console.error(error)
+    try {
+      const response = await fetch(url, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      if (!response.ok) {
+        throw Error(response.statusText)
       }
-    )
+      const json = await response.json()
+      this.getPosts()
+      console.log(json)
+    } catch (error) {
+      console.error(error.message)
+    }
   }
 
   render() {

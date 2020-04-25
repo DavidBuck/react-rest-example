@@ -4,7 +4,10 @@ This is a simple React example showing how to consume a restful API.
 
 Run `npm run start` to start the JSON server and the React client.
 
-This version uses React 16.13.1.
+## Versions
+
+- [Version 2](https://github.com/DavidBuck/react-rest-example/tree/v2.0) - Example using a class component and async/await. React version 16.13.1
+- [Version 1](https://github.com/DavidBuck/react-rest-example/tree/v1.0) - Example using a class component and promises. React version 16.13.1.
 
 ## Tools
 
