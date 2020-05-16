@@ -14,4 +14,3 @@ Run `npm run start` to start the JSON server and the React client.
 
 - [JSON Server](https://github.com/typicode/json-server)
 - [Tailwind](https://tailwindcss.com)
-- [ng-tailwindcss](https://github.com/tehpsalmist/ng-tailwindcss)
