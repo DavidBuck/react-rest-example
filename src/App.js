@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 
-import React, { useState } from "react"
+import { useState } from "react"
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -140,7 +140,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {posts.map(post => (
+          {posts.map((post) => (
             <tr key={post.id}>
               <td className="border px-4 py-2 border-gray-600">{post.id}</td>
               <td className="border px-4 py-2 border-gray-600">{post.title}</td>
